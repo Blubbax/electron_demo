@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Electron</title>
+</head>
+<body>
+    <h1>Scooter Übersicht</h1>
+
+    <section>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+            </tr>
+        </table>
+    </section>
+    
+    <script>
+        (async () => {
+
+            const $table = document.querySelector('table')
+
+            const response = await fetch('http://localhost/BUSINESSSW/getScooterStatus.php')
+            data = await response.json()
+            data.forEach(scooter => {
+                $table.innerHTML += "<tr><td>" + scooter.SCOOTER_ID + "</td><td>" + scooter.RESERVATION_STATUS + "</td></tr>"
+            });
+
+            new Notification("E-Scooter abgerufen", { body: "Es wurden " + data.length + " E-Scooter abgerufen." })
+        })();
+    </script>
+</body>
+</html>
