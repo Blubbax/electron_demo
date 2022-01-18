@@ -16,6 +16,12 @@ const menuTemplate = [
         label: 'Scooter',
         submenu: [
             { 
+                label: 'Reservierungen',
+                click: async () => {
+                    win.loadFile('src/reservations.html')
+                }
+            },
+            { 
                 label: 'Scooter Übersicht',
                 click: async () => {
                     win.loadFile('src/scooters.html')
