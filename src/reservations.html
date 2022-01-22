@@ -11,7 +11,15 @@
     <h1>Scooter Reservierungen</h1>
 
     <section>
-        <!-- TODO Füge hier eine Tabelle ein -->
+        <table>
+            <tr>
+                <th>RESERVATION_ID</th>
+                <th>SCOOTER_ID</th>
+                <th>USER_ID</th>
+                <th>STARTDATE</th>
+                <th>ENDDATE</th>
+            </tr>
+        </table>
     </section>
     
     <script>
@@ -35,6 +43,21 @@
                     "ENDDATE": "2022-01-14 00:08:43"
                 }
             ]
+
+            
+            const $table = document.querySelector('table')
+
+            const response = await fetch('http://localhost/BUSINESSSW/reservationOverview.php')
+            data = await response.json()
+            data.forEach(reservation => {
+                $table.innerHTML += "<tr><td>" + reservation.RESERVATION_ID
+                    + "</td><td>" + reservation.SCOOTER_ID
+                    + "</td><td>" + reservation.USER_ID
+                    + "</td><td>" + reservation.STARTDATE
+                    + "</td><td>" + reservation.ENDDATE + "</td></tr>"
+            });
+
+            new Notification("Reservierungen abgerufen", { body: "Es wurden " + data.length + " Reservierungen abgerufen." })
 
         })();
 

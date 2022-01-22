@@ -5,16 +5,22 @@ var win;
 
 const createWindow = () => {  
     win = new BrowserWindow({
-      width: 800,
-      height: 600
+      width: 1000,
+      height: 800
     })
-    win.loadFile('src/index.html')
+    win.loadFile('src/reservations.html')
 }
 
 const menuTemplate = [
     {
         label: 'Scooter',
         submenu: [
+            { 
+                label: 'Reservierungen',
+                click: async () => {
+                    win.loadFile('src/reservations.html')
+                }
+            },
             { 
                 label: 'Scooter Übersicht',
                 click: async () => {
