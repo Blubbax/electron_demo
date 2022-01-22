@@ -4,10 +4,8 @@
   "description": "Demo project for Electron",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "electron .",
+    "pack": "npx electron-builder --dir"
   },
   "repository": {
     "type": "git",
@@ -19,42 +17,36 @@
     "url": "https://github.com/Blubbax/electron_demo/issues"
   },
   "homepage": "https://github.com/Blubbax/electron_demo#readme",
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
-    "@electron-forge/maker-deb": "^6.0.0-beta.63",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
-    "@electron-forge/maker-zip": "^6.0.0-beta.63",
-    "electron": "^16.0.7"
-  },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
+  "build": {
+    "appId": "com.electron_demo",
+    "dmg": {
+      "contents": [
         {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "electron_demo"
-          }
+          "x": 110,
+          "y": 150
         },
         {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
         }
       ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
     }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^16.0.7",
+    "electron-builder": "^22.14.5"
   }
 }

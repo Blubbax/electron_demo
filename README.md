@@ -11,4 +11,4 @@ zu testen, ist die Anwendung mittels `npm start` auszuführen.
 ## Kommandozeilenbefehle:
 - `npm install`: Installation der notwendigen Komponenten
 - `npm start`: Starten der Electron-Anwendung
-- `npm run make`: Exportieren der Electron Anwendung
+- `npm run pack`: Exportieren der Electron Anwendung
