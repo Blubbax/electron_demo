@@ -11,34 +11,31 @@
     <h1>Scooter Reservierungen</h1>
 
     <section>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Scooter</th>
-                <th>Benutzer ID</th>
-                <th>Startzeitpunkt</th>
-                <th>Endzeitpunkt</th>
-            </tr>
-        </table>
+        <!-- TODO Füge hier eine Tabelle ein -->
     </section>
     
     <script>
         (async () => {
-            const $table = document.querySelector('table')
+            // TODO
+            // URL: http://localhost/.../reservationOverview.php
+            // Beispiel für eine Rückgabe
+            const response_example = [
+                {
+                    "RESERVATION_ID": "80",
+                    "SCOOTER_ID": "3",
+                    "USER_ID": "1",
+                    "STARTDATE": "2022-01-13 20:56:52",
+                    "ENDDATE": "2022-01-13 20:59:06"
+                },
+                {
+                    "RESERVATION_ID": "81",
+                    "SCOOTER_ID": "3",
+                    "USER_ID": "1",
+                    "STARTDATE": "2022-01-14 00:08:41",
+                    "ENDDATE": "2022-01-14 00:08:43"
+                }
+            ]
 
-            // Achtung: Die URL kann abweichen!
-            const response = await fetch('http://localhost/BUSINESSSW/reservationOverview.php')
-            data = await response.json()
-            data.forEach(reservation => {
-                $table.innerHTML += "<tr><td>" + reservation.RESERVATION_ID
-                    + "</td><td>" + reservation.SCOOTER_ID
-                    + "</td><td>" + reservation.USER_ID + "</td><td>"
-                    + reservation.STARTDATE + "</td><td>"
-                    + reservation.ENDDATE + "</td></tr>"
-
-            });
-
-            new Notification("E-Scooter abgerufen", { body: "Es wurden " + data.length + " Reservierungen abgerufen." })
         })();
 
     </script>
